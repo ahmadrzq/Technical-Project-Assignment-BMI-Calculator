@@ -19,16 +19,9 @@ if (form) {
     result.innerHTML = ``;
 
     // Membuat elemen baru di dalam element result ketika ada submit
-    if (!bmi || !bmiCategories) {
-      const newResult = document.createElement("p");
-      newResult.innerHTML = `Your BMI Invalid`;
-      result.appendChild(newResult);
-    } else {
-      const newResult = document.createElement("p");
-      newResult.innerHTML = `Your BMI is <span id="bmi-result"></span> which means You are
-        <span id="bmi-result-categories"></span>`;
-      result.appendChild(newResult);
-    }
+    const newResult = document.createElement("p");
+    newResult.innerHTML = getResultMessage(bmi, bmiCategories);
+    result.appendChild(newResult);
 
     // Menampilkan bmi
     let bmiResult = document.getElementById("bmi-result");
@@ -42,29 +35,28 @@ if (form) {
   });
 }
 
+function getResultMessage(bmi, bmiCategories) {
+  let message = `Your BMI Invalid`;
+  if (bmi && bmiCategories) {
+    message = `Your BMI is <span id="bmi-result"></span> which means You are
+        <span id="bmi-result-categories"></span>`;
+  }
+}
+
 // Fungsi menghitung BMI
 function bodyMassIndex(weight, height) {
   if (weight <= 0 || height <= 0) {
     return false;
-  } else {
-    let result = weight / (height / 100) ** 2;
-    return result.toFixed(1);
   }
+  let result = weight / (height / 100) ** 2;
+  return result.toFixed(1);
 }
 
 // Fungsi menentukan kategori bmi
 function bodyMassIndexCategories(bmi) {
-  if (bmi) {
-    if (bmi < 18.5) {
-      return `Underweight`;
-    } else if (bmi <= 24.9) {
-      return `Normal`;
-    } else if (bmi <= 29.9) {
-      return `Overweight`;
-    } else {
-      return `Obesity`;
-    }
-  } else {
-    return false;
-  }
+  if (!bmi) return false;
+  if (bmi < 18.5) return `Underweight`;
+  if (bmi <= 24.9) return `Normal`;
+  if (bmi <= 29.9) return `Overweight`;
+  return `Obesity`;
 }
