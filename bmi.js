@@ -41,6 +41,7 @@ function getResultMessage(bmi, bmiCategories) {
     message = `Your BMI is <span id="bmi-result"></span> which means You are
         <span id="bmi-result-categories"></span>`;
   }
+  return message;
 }
 
 // Fungsi menghitung BMI
