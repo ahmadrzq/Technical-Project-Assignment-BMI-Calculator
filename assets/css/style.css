@@ -31,10 +31,10 @@ input[type="number"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(255, 255, 255);
+  background: rgb(208, 204, 252);
   background: linear-gradient(
     318deg,
-    rgba(255, 255, 255, 1) 0%,
+    rgba(208, 204, 252, 1) 0%,
     rgba(101, 88, 245, 1) 100%
   );
 }
@@ -71,8 +71,9 @@ input[type="number"] {
 .form__input {
   width: 100%;
   padding: 0.6rem;
-  border: 2px solid #c5ced6;
+  border: 2px solid black;
   border-radius: 8px;
+  background: transparent;
 }
 .form__submit {
   margin-bottom: 3rem;
